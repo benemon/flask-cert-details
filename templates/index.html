@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Certificate Details</title>
+</head>
+<body>
+    <h1>Certificate Details</h1>
+    <h2>TLS Certificate</h2>
+    <p><strong>Subject:</strong> {{ formatted_tls_subject }}</p>
+    <p><strong>Issuer:</strong> {{ formatted_tls_issuer }}</p>
+    <p><strong>Expiry Date and Time:</strong> {{ tls_cert_expiry }}</p>
+    <p><strong>Valid:</strong> {{ 'Yes' if tls_cert_valid else 'No' }}</p>
+    <p><strong>Signed by CA:</strong> {{ 'Yes' if tls_signed_by_ca else 'No' }}</p>
+    
+    <h2>CA Certificate</h2>
+    <p><strong>Subject:</strong> {{ formatted_ca_subject }}</p>
+    <p><strong>Issuer:</strong> {{ formatted_ca_issuer }}</p>
+    <p><strong>Expiry Date and Time:</strong> {{ ca_cert_expiry }}</p>
+</body>
+</html>
