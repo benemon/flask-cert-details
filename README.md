@@ -2,6 +2,8 @@
 
 Small utility to demonstrate the validity / rotation of certificates. Particularly helpful for demonstrating HashiCorp Vault's PKI Secrets Engine in Kubernetes clusters.
 
+*Note that this will not show details on the certificate chain used in the process of securing in-transit communication with the application.*
+
 ## usage
 
 Set the following environment variables:
@@ -24,6 +26,35 @@ Press CTRL+C to quit
 
 ## output
 
-Access either via FQDN, or via the URL in the CLI.
+Access using a browser either via FQDN, or via the URL presented the CLI (depending on how you're running it):
 
 ![screenshot of flask-cert-details displaying certificate and CA information](./images/output.png)
+
+## kubernetes
+
+When using in Kubernetes, it's useful to mount the Secret containing the managed certificates as a volume on a deployment:
+
+When something like the Vault Secrets Operator rotates the certificate, the next request to this app will show the details.
+
+```yaml
+...
+    spec:
+      volumes:
+        - name: short-lived-cert
+          secret:
+            secretName: short-lived-cert
+            defaultMode: 420
+          ...
+          volumeMounts:
+            - name: short-lived-cert
+              readOnly: true
+              mountPath: /opt/certificate/
+          ...
+          env:
+            - name: TLS_CERT_PATH
+              value: /opt/certificate/tls.crt
+            - name: CA_CERT_PATH
+              value: /opt/certificate/issuing_ca
+...
+
+```
