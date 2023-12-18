@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #d8f3dc; /* Light pastel green background */
+    color: #335c67; /* Dark teal for text, for readability and contrast */
+}
+
+h1, h2 {
+    color: #558c8c; /* Soft teal for headings */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Soft shadow for depth */
+}
+
+table, th, td {
+    border: 1px solid #c4c4c4; /* Grey border */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    background-color: #f9f9f9; /* Light grey for table cells */
+    color: #333; /* Dark text for contrast */
+}
+
+th {
+    background-color: #e0e0e0; /* Slightly darker grey for headers */
+    color: #333; /* Dark text for readability */
+}
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Alternating rows in a slightly darker grey */
+}

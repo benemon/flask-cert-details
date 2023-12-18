@@ -3,19 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Certificate Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>Certificate Details</h1>
+
     <h2>TLS Certificate</h2>
-    <p><strong>Subject:</strong> {{ formatted_tls_subject }}</p>
-    <p><strong>Issuer:</strong> {{ formatted_tls_issuer }}</p>
-    <p><strong>Expiry Date and Time:</strong> {{ tls_cert_expiry }}</p>
-    <p><strong>Valid:</strong> {{ 'Yes' if tls_cert_valid else 'No' }}</p>
-    <p><strong>Signed by CA:</strong> {{ 'Yes' if tls_signed_by_ca else 'No' }}</p>
-    
+    <table>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Subject</td>
+            <td>{{ formatted_tls_subject }}</td>
+        </tr>
+        <tr>
+            <td>Issuer</td>
+            <td>{{ formatted_tls_issuer }}</td>
+        </tr>
+        <tr>
+            <td>Expiry Date and Time</td>
+            <td>{{ tls_cert_expiry }}</td>
+        </tr>
+        <tr>
+            <td>Valid</td>
+            <td>{{ 'Yes' if tls_cert_valid else 'No' }}</td>
+        </tr>
+        <tr>
+            <td>Signed by CA</td>
+            <td>{{ 'Yes' if tls_signed_by_ca else 'No' }}</td>
+        </tr>
+    </table>
+
     <h2>CA Certificate</h2>
-    <p><strong>Subject:</strong> {{ formatted_ca_subject }}</p>
-    <p><strong>Issuer:</strong> {{ formatted_ca_issuer }}</p>
-    <p><strong>Expiry Date and Time:</strong> {{ ca_cert_expiry }}</p>
+    <table>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Subject</td>
+            <td>{{ formatted_ca_subject }}</td>
+        </tr>
+        <tr>
+            <td>Issuer</td>
+            <td>{{ formatted_ca_issuer }}</td>
+        </tr>
+        <tr>
+            <td>Expiry Date and Time</td>
+            <td>{{ ca_cert_expiry }}</td>
+        </tr>
+    </table>
 </body>
 </html>
